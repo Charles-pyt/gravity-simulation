@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gravity-simulation</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="ui-panel">
+  <h2>Créateur de Planète</h2>
+  
+  <div class="control-group">
+    <label>Taille (Masse) :</label>
+    <input type="range" id="sizeInput" min="2" max="30" value="10">
+  </div>
+
+  <div class="control-group">
+    <label>Distance du Soleil :</label>
+    <input type="range" id="distInput" min="60" max="400" value="200">
+    <small>Ex: Mercure(70), Terre(200), Mars(300)</small>
+  </div>
+
+  <div class="control-group">
+    <label>Couleur :</label>
+    <input type="color" id="colorInput" value="#00ff00">
+  </div>
+
+  <button id="addBtn">Lancer la planète 🚀</button>
+  <button id="resetBtn">Réinitialiser Système Solaire ☀️</button>
+</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
