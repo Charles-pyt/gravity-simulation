@@ -9,14 +9,22 @@ body {
   position : absolute;
   top      : 20px;
   right   : 20px;
-  background: rgba(30, 30, 30, 0.8);
+  background: rgba(20, 20, 25, 0.9);
   color   : white;
   padding : 20px;
   border-radius: 10px;
-  border: 1px solid #555;
+  border: 1px solid #444;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   font-family: 'Courier New', Courier, monospace;
-  width: 250px;
+  width: 280px;
   backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+h2 {
+  text-align: center;
+  color: "61dafb";
+  border-bottom: 1px solide #333;
+  padding-bottom: 10px;
 }
 
 .control-group {
@@ -51,4 +59,229 @@ button#resetBtn {
 
 button:hover {
   opacity: 0.9;
+}
+
+/* New scientifics styles */
+.science-group {
+  background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.input-row {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.input-row select {
+    flex: 1;
+    width: 0;
+    min-width: 40%;
+}
+
+.input-row input[type="number"] {
+    width: 60px;     /* Taille fixe pour le chiffre */
+    flex-shrink: 0;  /* Ne pas écraser le chiffre */
+}
+
+input[type="number"], select, input[type="color"] {
+    background: #111;
+    border: 1px solid #555;
+    color: #0f0; /* Vert terminal */
+    font-family: 'Courier New', Courier, monospace; /* Police monospace */
+    padding: 5px;
+    border-radius: 3px;
+    flex-grow: 1; /* Prend la place dispo */
+}
+
+.science-value {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: #aaa;
+    font-family: 'Courier New', monospace;
+}
+
+.science-value span {
+  color: #ffff;
+  font-weight: bold;
+}
+
+.help-text {
+    display: block;
+    font-size: 0.75em;
+    color: #777;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+.science-btn {
+    background: linear-gradient(to bottom, #3b82f6, #2563eb);
+    border: 1px solid #1d4ed8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.science-btn:active {
+    transform: translateY(1px);
+}
+
+.reset-btn { background: linear-gradient(to bottom, #ef4444, #dc2626); }
+
+/* --- STYLES DU BOUTON PAUSE PRO --- */
+#pauseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espace entre icône et texte */
+    width: 100%;
+    padding: 10px; /* Plus grand */
+    margin-bottom: 10px;
+    /* Dégradé bleu pro */
+    background: linear-gradient(to bottom, #3b82f6, #2563eb);
+    border: 1px solid #1d4ed8;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#pauseBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+}
+
+/* Style quand c'est en pause (classe ajoutée par JS) */
+#pauseBtn.paused {
+    background: linear-gradient(to bottom, #ef4444, #dc2626); /* Rouge */
+    border-color: #b91c1c;
+}
+#pauseBtn.paused:hover {
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+#colorInput[style*="display: block"] {
+  width: 100%;
+  height: 30px;
+  padding: 0;
+}
+
+/* --- NOUVEAU STYLE DE LA CARTE D'IDENTITÉ (INFO PANEL) --- */
+
+#info-panel {
+    position: absolute;
+    /* POSITIONNEMENT EN BAS À GAUCHE */
+    bottom: 20px; 
+    left: 20px;
+    width: 300px;
+    
+    /* Style "Pro" similaire au panneau principal */
+    background: rgba(30, 30, 35, 0.95); /* Fond sombre et profond */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombre portée */
+    border-radius: 12px; /* Coins arrondis */
+    padding: 20px;
+    
+    color: #eee; /* Texte clair mais pas blanc pur */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    backdrop-filter: blur(10px); /* Effet de flou d'arrière-plan moderne */
+    z-index: 100;
+    animation: slideIn 0.3s ease-out; /* Petite animation d'entrée */
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bouton de fermeture (croix) */
+#closeInfoBtn {
+    position: absolute;
+    top: 5px;
+    left: 145px;
+    background: none;
+    border: none;
+    color: #be1f1f;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+#closeInfoBtn:hover { color: white; }
+
+/* --- En-tête avec Image --- */
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace entre image et texte */
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* La petite image ronde */
+#infoImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Rend l'image parfaitement ronde */
+    object-fit: cover;
+    border: 2px solid #3b82f6; /* Petit cercle bleu autour */
+    background: #000;
+}
+
+#infoName {
+    margin: 0;
+    font-size: 1.4em;
+    color: #fff;
+    font-weight: 700;
+}
+
+.planet-type-badge {
+    display: inline-block;
+    font-size: 0.8em;
+    background: rgba(59, 130, 246, 0.2); /* Fond bleu léger */
+    color: #3b82f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* --- Grille de données --- */
+.info-data-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2); /* Fond léger pour chaque ligne */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.data-item .label {
+    color: #aaa;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.data-item .unit {
+    color: #777;
+    font-size: 0.8em;
+    margin-left: 4px;
+}
+
+/* Police monospace juste pour les chiffres, pour le look scientifique */
+.science-font {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #61dafb; /* Bleu science */
+    font-size: 1.1em;
 }

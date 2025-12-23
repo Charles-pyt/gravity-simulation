@@ -8,28 +8,91 @@
   </head>
   <body>
     <canvas id="canvas"></canvas>
-    <div id="ui-panel">
-  <h2>Créateur de Planète</h2>
-  
-  <div class="control-group">
-    <label>Taille (Masse) :</label>
-    <input type="range" id="sizeInput" min="2" max="30" value="10">
-  </div>
+  <div id="ui-panel">
+    <h2>Planet Creator</h2>
+    
+    <div class="control-group science-group">
+      <label>Mass:</label>
+      <div class="input-row">
+          <input type="number" id="massInput" value="1" min="0.1" step="0.1">
+          <select id="massUnit">
+              <option value="earth">Earths 🌍</option>
+              <option value="jupiter">Jupiters 🌕</option>
+          </select>
+      </div>
+      <small class="science-value">Real Value: <span id="realMassDisplay">Loading...</span></small>
+    </div>
 
-  <div class="control-group">
-    <label>Distance du Soleil :</label>
-    <input type="range" id="distInput" min="60" max="400" value="200">
-    <small>Ex: Mercure(70), Terre(200), Mars(300)</small>
-  </div>
+    <div class="control-group science-group">
+      <label>Distance from Sun:</label>
+      <div class="input-row">
+          <input type="number" id="distInput" value="1.5" min="0.1" step="0.1">
+          <select id="distUnit">
+              <option value="au">AU (Astro Unit)</option>
+              <option value="mk">Million km</option>
+          </select>
+      </div>
+      <small class="science-value">Real Value: <span id="realDistDisplay">Loading...</span></small>
+      <small class="help-text">Ex: Earth=1 AU, Mars=1.5 AU</small>
+    </div>
 
-  <div class="control-group">
-    <label>Couleur :</label>
-    <input type="color" id="colorInput" value="#00ff00">
-  </div>
+    <div class="control-group">
+      <label>Appearance:</label>
+      <select id="textureSelect">
+          <option value="rocky">Rocky (Grey/Red)</option>
+          <option value="icy">Icy (Blue/White)</option>
+          <option value="gas">Gas Giant (Beige)</option>
+          <option value="custom_color">Solid Color</option>
+      </select>
+      <input type="color" id="colorInput" value="#00ff00" style="display:none; margin-top:5px;">
+    </div>
+    <div class="control-group science-group">
+      <label>Time Control</label>
+      
+    <button id="pauseBtn">
+        <span id="pauseIcon">⏸️</span>
+        <span id="pauseText">Pause Simulation</span>
+      </button>
 
-  <button id="addBtn">Lancer la planète 🚀</button>
-  <button id="resetBtn">Réinitialiser Système Solaire ☀️</button>
-</div>
+      <div class="input-row">
+          <label style="font-size:0.8em; width: auto;">Speed:</label>
+          <input type="range" id="speedSlider" min="0" max="100" value="20">
+      </div>
+      <small class="science-value"><span id="speedDisplay">...</span></small>
+    </div>
+
+    <button id="addBtn" class="science-btn">Calculate & Launch 🚀</button>
+    <button id="resetBtn" class="reset-btn">Reset System ☀️</button>
+  </div>
+  <div id="info-panel" style="display: none;">
+    <button id="closeInfoBtn">×</button>
+    
+    <div class="info-header">
+        <img id="infoImage" src="" alt="Planet Thumbnail">
+        <div>
+            <h2 id="infoName">Planet Name</h2>
+            <span id="infoType" class="planet-type-badge">Type...</span>
+        </div>
+    </div>
+
+    <div class="info-data-grid">
+        <div class="data-item">
+              <span class="label">Mass:</span>
+              <span class="val science-font" id="infoMass">...</span>
+              <span class="unit">kg</span>
+        </div>
+        <div class="data-item">
+              <span class="label">Dist Sun:</span>
+              <span class="val science-font" id="infoDist">...</span>
+              <span class="unit">AU</span>
+        </div>
+        <div class="data-item">
+              <span class="label">Speed:</span>
+              <span class="val science-font" id="infoSpeed">...</span>
+              <span class="unit">km/s</span>
+        </div>
+      </div>
+  </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
